@@ -16,7 +16,6 @@ const Reset = () => {
         const email = event.target.email.value;
         await sendPasswordResetEmail(email);
 
-        // console.log(email, 'got it');
         toast('reset info sent to email!');
     };
     return (
@@ -49,6 +48,7 @@ const Reset = () => {
                             focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="exampleInputEmail2"
                             aria-describedby="emailHelp" placeholder="Enter email"
                             name='email'
+                            required
                         />
                     </div>
                     <input type="submit" value="Reset" className="

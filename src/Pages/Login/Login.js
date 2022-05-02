@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
+import { useAuthState, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import Loading from '../../Shared/Loading/Loading';
 import { toast } from 'react-toastify';
 
 const Login = () => {
+    const [user] = useAuthState(auth);
+    
     // EP => email & password
     // G => google
     const [
@@ -22,7 +24,7 @@ const Login = () => {
         errorG
     ] = useSignInWithGoogle(auth);
 
-    const [greyout, setGreyout] = useState(false);
+    const [grayout, setGrayout] = useState(false);
 
     const location = useLocation();
     const navigate = useNavigate();
@@ -35,25 +37,17 @@ const Login = () => {
         const password = event.target.password.value;
 
         signInWithEmailAndPassword(email, password);
-        // console.log(email, password, 'getting done!');
 
-        toast('login success!')
         event.target.reset();
     };
 
-    if (errorG || errorEP) {
-        console.log(errorG, 'occurs!');
+    if (user) {
+        navigate('/home');
     }
 
     if (userG || userEP) {
-        // console.log(userG, 'founded!');
         navigate(from, { replace: true });
     }
-
-    // if (!userG || !userEP) {
-    //     console.log('user not found');
-    //     navigate('/');
-    // }
 
     return (
         <div>
@@ -64,12 +58,12 @@ const Login = () => {
                 }
                 {
                     errorEP && <div className="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800" role="alert">
-                        <span className="font-medium">Error alert!</span> {errorEP}.
+                        <span className="font-medium">Error alert!</span> {errorEP?.message}.
                     </div>
                 }
                 {
                     errorG && <div className="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800" role="alert">
-                        <span className="font-medium">Error alert!</span> {errorG}.
+                        <span className="font-medium">Error alert!</span> {errorG?.message}.
                     </div>
                 }
                 <form onSubmit={handleLogin}>
@@ -92,6 +86,7 @@ const Login = () => {
                             focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="exampleInputEmail2"
                             aria-describedby="emailHelp" placeholder="Enter email"
                             name='email'
+                            required
                         />
                     </div>
                     <div className="form-group mb-6">
@@ -110,25 +105,23 @@ const Login = () => {
                             ease-in-out
                             m-0
                             focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="exampleInputPassword2"
-                            placeholder="Password"
+                            placeholder="Enter password"
                             name='password'
+                            required
                         />
                     </div>
                     <div className="flex justify-between items-center mb-6">
                         <div className="form-group form-check">
                             <input type="checkbox"
                                 className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-600 checked:border-blue-600 focus:outline-none transition duration-200 mt-1 align-top bg-no-repeat bg-center bg-contain float-left mr-2 cursor-pointer"
-                                id="exampleCheck2" onChange={() => setGreyout(!greyout)} />
+                                id="exampleCheck2" onChange={() => setGrayout(!grayout)} />
                             <label className="form-check-label inline-block text-gray-800" htmlFor="exampleCheck2">Remember me</label>
                         </div>
                         <Link to="/reset"
                             className="text-blue-600 hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out">Forgot
                             password?</Link>
                     </div>
-                    {
-                        greyout
-                            &&
-                            <input type="submit" value="Log in" className="
+                    <input type="submit" value="Log in" disabled={!grayout} className="
                                 w-full
                                 px-6
                                 py-2.5
@@ -146,8 +139,7 @@ const Login = () => {
                                 transition
                                 duration-150
                                 ease-in-out"
-                            />
-                    }
+                    />
                     <p className="text-gray-800 mt-6 text-center">Not a member?
                         <Link className="text-blue-600 hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out ml-2" to={'/register'}>Register</Link>
                     </p>

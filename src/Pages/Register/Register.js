@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useCreateUserWithEmailAndPassword, useUpdateProfile } from 'react-firebase-hooks/auth';
+import React from 'react';
+import { useAuthState, useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -7,12 +7,16 @@ import auth from '../../firebase.init';
 import Loading from '../../Shared/Loading/Loading';
 
 const Register = () => {
+    const [user] = useAuthState(auth)
     // EP => email & password
     // UP => updating profile
 
-    const [updateProfile, updating, errorUP] = useUpdateProfile(auth);
-    const navigate = useNavigate();
-
+    const [
+        updateProfile,
+        updating,
+        errorUP
+    ] = useUpdateProfile(auth);
+    
     const [
         createUserWithEmailAndPassword,
         userEP,
@@ -20,45 +24,57 @@ const Register = () => {
         errorEP,
     ] = useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
+    const [
+        signInWithGoogle,
+        userG,
+        loadingG,
+        errorG
+    ] = useSignInWithGoogle(auth);
+
+    const navigate = useNavigate();
+
     const handleSignup = async (event) => {
         event.preventDefault();
 
         const name = event.target.name.value;
         const email = event.target.email.value;
         const password = event.target.password.value;
+        const photo = event.target.photo.value;
 
         await createUserWithEmailAndPassword(email, password);
-        await updateProfile({ displayName: name });
+        await updateProfile({ displayName: name, photoURL: photo });
 
-        // console.log(name, email, password, 'finding done!');
         toast('registration success!');
     };
 
-    if (errorEP || errorUP) {
-        console.log(errorEP, 'occurs!');
+    if (user) {
+        navigate('/home');
     }
 
-    if (userEP) {
-        // toast('user created successfully!')
-        // console.log(userEP, 'founded!');
-        navigate('/home')
+    if (userEP || userG) {
+        navigate('/home');
     }
-
-    // if (!userEP) {
-    //     toast('error in creating user!')
-    //     console.log('user not found');
-    // }
 
     return (
         <div>
             <div className="block p-6 rounded-lg shadow-lg bg-white max-w-md mx-auto">
                 <h2 className='text-3xl mb-4'>Welcome to registration form!</h2>
                 {
-                    (loadingEP || updating) && <Loading></Loading>
+                    (loadingEP || updating || loadingG) && <Loading></Loading>
                 }
                 {
                     errorEP && <div className="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800" role="alert">
-                        <span className="font-medium">Error alert!</span> {errorEP}.
+                        <span className="font-medium">Error alert!</span> {errorEP?.message}.
+                    </div>
+                }
+                {
+                    errorG && <div className="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800" role="alert">
+                        <span className="font-medium">Error alert!</span> {errorG?.message}.
+                    </div>
+                }
+                {
+                    errorUP && <div className="p-4 mb-4 text-sm text-green-700 bg-green-100 rounded-lg dark:bg-green-200 dark:text-green-800" role="alert">
+                        <span className="font-medium">Error alert!</span> {errorUP?.message}.
                     </div>
                 }
                 <form onSubmit={handleSignup}>
@@ -79,8 +95,9 @@ const Register = () => {
                                 ease-in-out
                                 m-0
                                 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="exampleInput123"
-                                aria-describedby="emailHelp123" placeholder="Full name"
+                                aria-describedby="emailHelp123" placeholder="Enter full name"
                                 name='name'
+                                required
                             />
                         </div>
                     </div>
@@ -99,8 +116,9 @@ const Register = () => {
                             ease-in-out
                             m-0
                             focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="exampleInput125"
-                            placeholder="Email address"
+                            placeholder="Enter email address"
                             name='email'
+                            required
                         />
                     </div>
                     <div className="form-group mb-6">
@@ -118,8 +136,28 @@ const Register = () => {
                             ease-in-out
                             m-0
                             focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="exampleInput126"
-                            placeholder="Password"
+                            placeholder="Enter password"
                             name='password'
+                            required
+                        />
+                    </div>
+                    <div className="form-group mb-6">
+                        <input type="text" className="form-control block
+                            w-full
+                            px-3
+                            py-1.5
+                            text-base
+                            font-normal
+                            text-gray-700
+                            bg-white bg-clip-padding
+                            border border-solid border-gray-300
+                            rounded
+                            transition
+                            ease-in-out
+                            m-0
+                            focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" id="exampleInput125"
+                            placeholder="Enter display photo url (optional)"
+                            name='photo'
                         />
                     </div>
                     <div className="form-group form-check text-center mb-6">
@@ -144,8 +182,16 @@ const Register = () => {
                         active:bg-blue-800 active:shadow-lg
                         transition
                         duration-150
-                        ease-in-out" />
+                        ease-in-out"
+                        title='by clicking sign up, you are accepting with our terms and conditions'
+                    />
                 </form>
+                <hr className='my-4' />
+                <p className="form-check-label text-gray-800 text-center">
+                    or, you can try
+                    <button className="btn btn-lg btn-block btn-primary bg-red-600 hover:bg-red-700  w-full py-2 text-white rounded mt-2"
+                        type="submit" onClick={() => signInWithGoogle()}><i className="fa fa-google" aria-hidden="true"></i> Sign up with google</button>
+                </p>
             </div>
         </div>
     );
