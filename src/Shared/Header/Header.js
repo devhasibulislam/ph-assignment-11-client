@@ -12,7 +12,7 @@ const Header = () => {
 
     return (
         <div className='shadow-sm'>
-            <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 mb-3">
+            <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 mb-3 bg-[#dfe6e9]">
                 <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
                     <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
 
@@ -23,14 +23,14 @@ const Header = () => {
                             {
                                 error && toast(error?.message)
                             }
-                            <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">K.G.F franchise</span>
+                            <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">franchise house</span>
                         </CustomLink>
                         <button
                             className="text-white cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-gray-500 block lg:hidden outline-none focus:outline-none"
                             type="button"
                             onClick={() => setNavbarOpen(!navbarOpen)}
                         >
-                            <i class="fa fa-bars" aria-hidden="true"></i>
+                            <i className="fa fa-bars" aria-hidden="true"></i>
                         </button>
                     </div>
                     <div

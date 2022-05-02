@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 
 const Login = () => {
     const [user] = useAuthState(auth);
-    
+
     // EP => email & password
     // G => google
     const [

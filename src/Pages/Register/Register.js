@@ -16,7 +16,7 @@ const Register = () => {
         updating,
         errorUP
     ] = useUpdateProfile(auth);
-    
+
     const [
         createUserWithEmailAndPassword,
         userEP,

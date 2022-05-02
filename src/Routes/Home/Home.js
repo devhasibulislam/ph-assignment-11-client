@@ -17,25 +17,25 @@ const Home = () => {
         {
             name: 'Competitive exchange rates',
             description:
-                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
+                'For online transfers initiated through MyFD, a blue “Show Expense Transfer” button is displayed at the top; click on this to see the original Expense Transfer form, including notes, reason for transfer, and audit trail.',
             icon: GlobeAltIcon,
         },
         {
             name: 'No hidden fees',
             description:
-                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
+                'The original Expense Transfer can also be accessed without going through Transaction Detail by clicking the date reference in Transaction Summary or Reconciliation (in Transaction Summary the date is prepended with a "TX:").',
             icon: ScaleIcon,
         },
         {
             name: 'Transfers are instant',
             description:
-                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
+                'Item names, shown in blue along the left hand side of the report, are links to the MyFD Glossary; glossary entries provide additional explanation of the field as well as possible values.',
             icon: LightningBoltIcon,
         },
         {
             name: 'Mobile notifications',
             description:
-                'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione.',
+                'The Value column displays the specific value for that transaction, followed by the Value Description; values and descriptions will vary for each transaction.',
             icon: AnnotationIcon,
         },
     ]
@@ -67,7 +67,7 @@ const Home = () => {
                 </dh-component>
             </div>
             {/* cta */}
-            <section class="relative py-20 2xl:py-40 bg-gray-800 overflow-hidden">
+            <section className="relative py-20 2xl:py-40 bg-gray-800 overflow-hidden">
                 <div className="bg-white">
                     <div className="max-w-2xl mx-auto py-24 px-4 grid items-center grid-cols-1 gap-y-16 gap-x-8 sm:px-6 sm:py-32 lg:max-w-7xl lg:px-8 lg:grid-cols-2">
                         <div>
@@ -120,8 +120,7 @@ const Home = () => {
                             A better way to send money
                         </p>
                         <p className="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
-                            Lorem ipsum dolor sit amet consect adipisicing elit. Possimus magnam voluptatum cupiditate veritatis in
-                            accusamus quisquam.
+                            The Transaction Detail is the information about a transaction that is able to be reviewed from multiple reports like Transaction Summary or Reconciliation reports. Click on the linked Description or the linked 6-digit Account Code in the Transaction Summary report or the Reconciliation report to drill down to the Transaction Detail. Users can create ad-hoc reports using the Query tool to retrieve the transaction detail fields for multiple transactions at once. The most common query to retrieve Transaction Detail data is the Transaction Summary reporting template in the Query tool.
                         </p>
                     </div>
 
