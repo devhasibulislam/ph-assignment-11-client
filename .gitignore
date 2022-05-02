@@ -4,6 +4,8 @@
 /node_modules
 /.pnp
 .pnp.js
+__images_url.js
+__female_dress_name.js
 
 # testing
 /coverage
