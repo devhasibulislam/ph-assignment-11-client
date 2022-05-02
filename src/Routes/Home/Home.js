@@ -13,7 +13,7 @@ const Home = () => {
         { name: 'Considerations', description: 'Made from natural materials. Grain and color vary with each item.' },
     ];
 
-    const features = [
+    const featuresForTransactions = [
         {
             name: 'Competitive exchange rates',
             description:
@@ -42,15 +42,15 @@ const Home = () => {
 
     return (
         <div>
-            {/* banner */}
+            {/* banner section */}
             <div className="py-12 overflow-y-hidden">
                 <dh-component>
                     <div className="w-full px-6">
-                        <div className="mt-8 relative rounded-lg bg-[#4a413d] container mx-auto flex flex-col items-center pt-12 sm:pt-24 pb-24 sm:pb-32 md:pb-48 lg:pb-56 xl:pb-64">
+                        <div className="mt-8 relative rounded-lg bg-[#8c3e31] container mx-auto flex flex-col items-center pt-12 sm:pt-24 pb-24 sm:pb-32 md:pb-48 lg:pb-56 xl:pb-64">
                             <img className="mr-2 lg:mr-12 mt-2 lg:mt-12 absolute right-0 top-0" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/center_aligned_with_image-svg2.svg" alt="bg" />
                             <img className="ml-2 lg:ml-12 mb-2 lg:mb-12 absolute bottom-0 left-0" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/center_aligned_with_image-svg3.svg" alt="bg" />
                             <div className="w-11/12 sm:w-2/3 mb-5 sm:mb-10">
-                                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-center text-white font-bold leading-tight">Powerful people come from powerfull place!</h1>
+                                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-center text-white font-bold leading-tight">Powerful clothes come from powerful person!</h1>
                             </div>
                             <div className="flex justify-center items-center mb-8">
                                 <button onClick={() => navigate('/addItems')} className="hover:text-white hover:bg-transparent lg:text-xl hover:border-white border bg-white transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 ring-offset-indigo-700	focus:ring-white rounded text-indigo-700 px-4 sm:px-8 py-1 sm:py-3 text-sm">Get Started</button>
@@ -60,13 +60,13 @@ const Home = () => {
                         </div>
                         <div className="container mx-auto flex justify-center md:-mt-56 -mt-20 sm:-mt-40">
                             <div className="relative sm:w-2/3 w-11/12">
-                                <img src="https://www.mirchi9.com/wp-content/uploads/2022/04/US-BO-Telugu-Audience-Lifeline-For-KGF-2.jpg" alt="Sample Page" className='rounded-lg' />
+                                <img src="https://garryblack.com/blog/wp-content/uploads/2011/10/Ottawa_Model_Workshop11.jpg" alt="Sample Page" className='rounded-lg mx-auto' />
                             </div>
                         </div>
                     </div>
                 </dh-component>
             </div>
-            {/* cta */}
+            {/* extra section 1 */}
             <section className="relative py-20 2xl:py-40 bg-gray-800 overflow-hidden">
                 <div className="bg-white">
                     <div className="max-w-2xl mx-auto py-24 px-4 grid items-center grid-cols-1 gap-y-16 gap-x-8 sm:px-6 sm:py-32 lg:max-w-7xl lg:px-8 lg:grid-cols-2">
@@ -111,7 +111,7 @@ const Home = () => {
                     </div>
                 </div>
             </section>
-            {/* marketing */}
+            {/* extra section 2 */}
             <div className="py-12 bg-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="lg:text-center">
@@ -126,7 +126,7 @@ const Home = () => {
 
                     <div className="mt-10">
                         <dl className="space-y-10 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-10">
-                            {features.map((feature) => (
+                            {featuresForTransactions.map((feature) => (
                                 <div key={feature.name} className="relative">
                                     <dt>
                                         <div className="absolute flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
