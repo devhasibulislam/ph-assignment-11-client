@@ -1,7 +1,6 @@
 import { signOut } from 'firebase/auth';
 import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { Link } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import CustomLink from '../../Routes/CustomLink/CustomLink';
@@ -9,7 +8,8 @@ import Loading from '../Loading/Loading';
 
 const Header = () => {
     const [user, loading, error] = useAuthState(auth);
-    const [navbarOpen, setNavbarOpen] = useState(false)
+    const [navbarOpen, setNavbarOpen] = useState(false);
+
     return (
         <div className='shadow-sm'>
             <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 mb-3">
@@ -23,10 +23,10 @@ const Header = () => {
                             {
                                 error && toast(error?.message)
                             }
-                            <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">warehouse</span>
+                            <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">K.G.F franchise</span>
                         </CustomLink>
                         <button
-                            className="text-white cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-transparent block lg:hidden outline-none focus:outline-none"
+                            className="text-white cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-gray-500 block lg:hidden outline-none focus:outline-none"
                             type="button"
                             onClick={() => setNavbarOpen(!navbarOpen)}
                         >
@@ -40,7 +40,7 @@ const Header = () => {
                         }
                         id="example-navbar-danger"
                     >
-                        <ul className="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium items-center">
+                        <ul className="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium items-end lg:items-center md:items-center">
                             <li>
                                 <CustomLink to="/" className="block py-2 pr-4 pl-3 text-white rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white" aria-current="page">Home</CustomLink>
                             </li>
@@ -84,7 +84,6 @@ const Header = () => {
                     </div>
                 </div>
             </nav>
-
         </div>
     );
 };

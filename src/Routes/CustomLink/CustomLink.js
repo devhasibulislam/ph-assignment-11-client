@@ -18,4 +18,4 @@ const CustomLink = ({ children, to, ...props }) => {
     );
 };
 
-export default CustomLink; 
+export default CustomLink;
