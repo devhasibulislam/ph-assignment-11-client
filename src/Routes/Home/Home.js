@@ -61,7 +61,7 @@ const Home = () => {
                                 <button onClick={() => navigate('/addItems')} className="hover:text-white hover:bg-transparent lg:text-xl hover:border-white border bg-white transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 ring-offset-indigo-700	focus:ring-white rounded text-indigo-700 px-4 sm:px-8 py-1 sm:py-3 text-sm">Get Started</button>
                                 <button onClick={() => navigate('/blog')} className="hover:bg-white hover:text-indigo-600 lg:text-xl hover:border-indigo-600 ml-3 sm:ml-6 bg-transparent transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 ring-offset-indigo-700 focus:ring-white hover:bg-indigo-700-800 rounded border border-white text-white px-4 sm:px-8 py-1 sm:py-3 text-sm">Learn More</button>
                             </div>
-                            <p className='text-white text-center'>If you think you are bad then I'm your dad!</p>
+                            <p className='text-white text-center'>If you think your dresses are bad then my dresses are your dad!</p>
                         </div>
                         <div className="container mx-auto flex justify-center md:-mt-56 -mt-20 sm:-mt-40">
                             <div className="relative sm:w-2/3 w-11/12">
@@ -74,7 +74,7 @@ const Home = () => {
             {/* services section */}
             <div className='bg-gray-400 py-4'>
                 <h1 className='text-center text-6xl py-4'># Our Services</h1>
-                <div className='grid grid-cols-3 max-w-7xl mx-auto gap-y-12 py-12'>
+                <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 lg:px-0 px-2 md:gap-x-4 max-w-7xl mx-auto gap-y-12 py-12'>
                     {
                         seeMore
                             ?
