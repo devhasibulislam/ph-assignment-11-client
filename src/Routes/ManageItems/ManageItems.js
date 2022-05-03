@@ -81,7 +81,7 @@ const ManageItems = () => {
                                     focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none
                                 "
                                 aria-label="Default select example">
-                                <option value="10" selected>Selected default or how much wanna see?</option>
+                                <option value="10">Selected default 10 or how much wanna see?</option>
                                 <option value="15">Fifteen</option>
                                 <option value="20">Twenty</option>
                                 <option value="30">Thirty</option>
