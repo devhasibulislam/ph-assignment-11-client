@@ -13,6 +13,7 @@ import ManageItems from './Routes/ManageItems/ManageItems';
 import AddItems from './Routes/AddItems/AddItems';
 import NotFound from './Routes/NotFound/NotFound';
 import Blog from './Routes/Blog/Blog';
+import Inventory from './Routes/Inventory/Inventory';
 
 function App() {
   return (
@@ -30,6 +31,11 @@ function App() {
           </RequireAuth>
         }></Route>
         <Route path='/blog' element={<Blog></Blog>}></Route>
+        <Route path='/inventory/:id' element={
+          <RequireAuth>
+            <Inventory></Inventory>
+          </RequireAuth>
+        }></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>
         <Route path='/reset' element={<Reset></Reset>}></Route>
