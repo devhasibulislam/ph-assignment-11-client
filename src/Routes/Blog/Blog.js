@@ -1,9 +1,7 @@
-import React, { useState } from 'react';
 import useBlogs from '../../hooks/useBlogs';
 import Bcard from '../Bcard/Bcard';
 
 const Blog = () => {
-    const [collapse, setCollapse] = useState(true);
     const [blogs] = useBlogs();
     return (
         <div>
