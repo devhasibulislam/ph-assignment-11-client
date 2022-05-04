@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "qno": "1",
+        "question": "Difference between JavaScript and NodeJS",
+        "answer": "JavaScript is programming language and NodeJS is an asynchronous event-driven JavaScript runtime. JavaScript mainly using for client side activity and NodeJS mainly using for performing non-blocking operations. JavaScript running on any engine like spider-monkey, JavaScript-core & v8-engine and NodeJS running only on v8-engine. JavaScript syntax followed C standard and NodeJS syntax fallowed C++ standard. JavaScript allow to use Ajax anytime and NodeJS allows to execute bash/shell script through terminal."
+    },
+    {
+        "id": 2,
+        "qno": "2",
+        "question": "Why should we use NodeJS and MongoDB?",
+        "answer": "NodeJS for applications with heavy computing server-side. MongoDB for building quick scalable fully functional managed database. NodeJS used for simple CRUD application where no API needed to load data. MongoDB used for global cluster atlases. NodeJS consider with server-side web applications with relational database. MongoDB fallout document database prominent with NoSQL database family."
+    },
+    {
+        "id": 3,
+        "qno": "3",
+        "question": "Difference between SQL & NoSQL database",
+        "answer": "SQL are relational and NoSQL are non-relational. SQL databases use structured query language and have a predefined schema. NoSQL databases have dynamic schemas for unstructured data. SQL databases use vertically managed approach, while NoSQL databases use horizontally managed approach. SQL databases are table-based, while NoSQL databases use document, key-value."
+    },
+    {
+        "id": 4,
+        "qno": "4",
+        "question": "What is the purpose of JWT & how it works?",
+        "answer": "JWT, or JSON Web Token is an open standard used to share security information between two parties — a client and a server. Each JWT contains encoded JSON objects, including a set of claims. JWTs are signed using a cryptographic algorithm to ensure that the claims cannot be altered after the token is issued. JWTs can be encrypted to also provide secrecy between parties. Because JWTs can be signed—for example, using public/private key pairs."
+    }
+]

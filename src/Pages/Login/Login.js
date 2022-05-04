@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAuthState, useSignInWithEmailAndPassword, useSignInWithGoogle } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 import Loading from '../../Shared/Loading/Loading';
+import axios from 'axios';
 
 const Login = () => {
     const [user] = useAuthState(auth);
@@ -29,13 +30,17 @@ const Login = () => {
     const navigate = useNavigate();
     let from = location.state?.from?.pathname || "/";
 
-    const handleLogin = (event) => {
+    const handleLogin = async(event) => {
         event.preventDefault();
 
         const email = event.target.email.value;
         const password = event.target.password.value;
 
-        signInWithEmailAndPassword(email, password);
+        await signInWithEmailAndPassword(email, password);
+        const { data } = await axios.post('http://localhost:5000/login', { email });
+        console.log(data);
+        localStorage.setItem('token', data.token);
+        navigate(from, { replace: true });
 
         event.target.reset();
     };
@@ -45,7 +50,10 @@ const Login = () => {
     }
 
     if (userG || userEP) {
-        navigate(from, { replace: true });
+        // navigate(from, { replace: true });
+        // userG && localStorage.setItem('token', userG.user.accessToken);
+        userG && console.log(userG);
+        userEP && console.log(userEP);
     }
 
     return (

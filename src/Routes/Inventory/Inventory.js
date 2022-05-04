@@ -1,31 +1,78 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import useMyItems from '../../hooks/useMyItems';
 import useProducts from '../../hooks/useProducts';
 
 const Inventory = () => {
     const { id } = useParams();
-    const [myItems] = useMyItems();
     const [products] = useProducts();
+    const [myItems] = useMyItems();
 
     const [updateForm, setUpdateForm] = useState(false);
 
     const matchedProducts = products.filter(product => product?._id === id);
     const matchedItems = myItems.filter(item => item?._id === id);
-    let finalMatch;
+    let finalMatch, slug;
 
-    // console.log(matchedProducts.length, 'my products');
-    // console.log(matchedProducts[0], 'my products');
-    // console.log(matchedItems.length, 'my items');
-    // console.log(matchedItems[0], 'my items');
-
-    if (matchedProducts.length !== 0) {
-        finalMatch = matchedProducts;
-    } else {
+    if (matchedItems.length > 0) {
         finalMatch = matchedItems;
+        slug = 'myItems';
+    }
+    else {
+        finalMatch = matchedProducts;
+        slug = 'product';
     }
 
-    // console.log(finalMatch, 'got it');
+    // console.log('here:', id, finalMatch, slug);
+
+    const handleUpdateInfo = (event) => {
+        event.preventDefault();
+        const name = event.target.name.value;
+        const price = event.target.price.value;
+        const img = event.target.photo.value;
+
+        const product = { img, name, price };
+        // console.log(product);
+
+        axios.put(`http://localhost:5000/${slug}/${id}`, product)
+            .then(res => {
+                console.log(res.data);
+                toast('item updated!');
+                event.target.reset();
+            })
+    };
+
+    const handleItemReduce = () => {
+        // console.log(finalMatch[0]?.qty);
+        const qty = parseInt(finalMatch[0]?.qty) - 1;
+        const product = { qty };
+
+        if (product.qty > 0) {
+            axios.put(`http://localhost:5000/${slug}/${id}`, product)
+                .then(res => {
+                    // console.log(res.data);
+                    toast('item delivered!');
+                    window.location.reload();
+                })
+        }
+    };
+
+    const handleItemIncrease = () => {
+        const qty = parseInt(finalMatch[0]?.qty) + 1;
+        const product = { qty };
+        console.log(product.qty);
+
+        if (product.qty > 1) {
+            axios.put(`http://localhost:5000/${slug}/${id}`, product)
+                .then(res => {
+                    // console.log(res.data);
+                    toast('item restocked!');
+                    window.location.reload();
+                })
+        }
+    };
 
     return (
         <div>
@@ -42,7 +89,7 @@ const Inventory = () => {
                                     <h2 className="mt-2 mb-2  font-bold">{finalMatch[0]?.name}</h2>
                                     <p className="text-sm">{finalMatch[0]?.desc}</p>
                                     <div className="mt-3 flex items-center">
-                                        <span className="text-sm font-semibold">Price:</span>&nbsp;<span className="font-bold text-xl">45,00</span>&nbsp;<span className="text-sm font-semibold">$</span>
+                                        <span className="text-sm font-semibold">Price:</span>&nbsp;<span className="font-bold text-xl">{finalMatch[0]?.price}</span>&nbsp;<span className="text-sm font-semibold">$</span>
                                     </div>
                                 </div>
                                 <div className="p-4 border-t border-b text-xs text-gray-700">
@@ -79,16 +126,21 @@ const Inventory = () => {
                             </div>
                             <div className='mt-4 border-t-2 border-black flex justify-between'>
                                 <button className="text-sky-500 border border-sky-500 hover:bg-sky-500 hover:text-white active:bg-sky-600 font-bold uppercase text-sm px-6 py-3 rounded outline-none focus:outline-none mr-1 mb-1 mt-4 ease-linear transition-all duration-150" type="button"
-                                    onClick={() => setUpdateForm(!updateForm)}
+                                    onClick={() => {
+                                        setUpdateForm(!updateForm);
+                                        // console.log(updateForm);
+                                    }}
                                 >
                                     Update item
                                 </button>
                                 <button className="text-red-500 border border-red-500 hover:bg-red-500 hover:text-white active:bg-red-600 font-bold uppercase text-sm px-6 py-3 rounded outline-none focus:outline-none mr-1 mb-1 mt-4 ease-linear transition-all duration-150" type="button"
+                                    onClick={handleItemReduce}
                                 >
                                     Deliver item
                                 </button>
                             </div>
                             <button className="text-emerald-500 border border-emerald-500 hover:bg-emerald-500 hover:text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded-full outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 block w-full mt-4" type="button"
+                                onClick={handleItemIncrease}
                             >
                                 Restock item
                             </button>
@@ -98,17 +150,17 @@ const Inventory = () => {
                     {
                         updateForm
                         &&
-                        <form className=' w-2/4 mx-auto'>
+                        <form className=' w-2/4 mx-auto' onSubmit={handleUpdateInfo}>
                             <div className="mb-6">
-                                <label for="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">New name</label>
+                                <label htmlFor="name" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">New name</label>
                                 <input name='name' type="name" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder={`i.e. ${finalMatch[0]?.name}`} required />
                             </div>
                             <div className="mb-6">
-                                <label for="number" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">New price</label>
-                                <input name='number' type="number" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder={`i.e. $ ${finalMatch[0]?.price}`} required />
+                                <label htmlFor="price" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">New price</label>
+                                <input name='price' type="number" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder={`i.e. $ ${finalMatch[0]?.price}`} required />
                             </div>
                             <div className="mb-6">
-                                <label for="photo" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">New photo url</label>
+                                <label htmlFor="photo" className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">New photo url</label>
                                 <input name='photo' type="photo" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder={`i.e. ${finalMatch[0]?.img}`} required />
                             </div>
                             <input type="submit" value="Update info" className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 cursor-pointer" style={{ display: 'block', width: '100%' }} />

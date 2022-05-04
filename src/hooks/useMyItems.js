@@ -9,7 +9,7 @@ const useMyItems = () => {
             .then(res => setMyItems(res?.data))
     }, []);
 
-    return [myItems, setMyItems];
+    return [myItems];
 };
 
 export default useMyItems;

@@ -1,20 +1,16 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
-import Card from '../Card/Card';
+import Card from '../../Routes/Card/Card';
+import { useAuthState } from 'react-firebase-hooks/auth';
+import axios from 'axios';
 
-const MyItems = () => {
+const Order = () => {
     const [user] = useAuthState(auth);
     const [orders, setOrders] = useState([]);
 
     useEffect(() => {
-        const getOrders = async () => {
-            const url = `http://localhost:5000/order?email=${user?.email}`;
-            const { data } = await axios.get(url);
-            setOrders(data);
-        };
-        getOrders();
+        axios.get(`http://localhost:5000/order?email=${user?.email}`)
+            .then(res => setOrders(res?.data))
     }, [user]);
 
     return (
@@ -34,4 +30,4 @@ const MyItems = () => {
     );
 };
 
-export default MyItems;
+export default Order;
