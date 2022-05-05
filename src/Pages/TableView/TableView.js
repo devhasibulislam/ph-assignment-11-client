@@ -7,7 +7,7 @@ const TableView = () => {
     const [myItems] = useMyItems();
     return (
         <div className='container mx-auto'>
-            <h1 className='text-center text-4xl my-3 font-bold'>Overall view products {
+            <h1 className='text-center text-4xl my-3 font-bold'>Overall view of custom products {
                 (myItems.length === 0)
                 &&
                 <span className='ml-8'>

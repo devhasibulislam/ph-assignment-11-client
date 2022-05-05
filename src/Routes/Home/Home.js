@@ -6,6 +6,7 @@ import Card from '../Card/Card';
 import banner from './banner.jpg';
 import PageTitle from '../../Pages/PageTitle/PageTitle';
 import Loading from '../../Shared/Loading/Loading';
+import Team from '../../Pages/Team/Team';
 
 const Home = () => {
     const navigate = useNavigate();
@@ -145,7 +146,7 @@ const Home = () => {
                 </div>
             </section>
             {/* extra section 2 */}
-            <div className="py-12 bg-white">
+            <div className="py-12 bg-gray-100">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="lg:text-center">
                         <h2 className="text-base text-indigo-600 font-semibold tracking-wide uppercase">Transactions</h2>
@@ -156,7 +157,6 @@ const Home = () => {
                             The Transaction Detail is the information about a transaction that is able to be reviewed from multiple reports like Transaction Summary or Reconciliation reports. Click on the linked Description or the linked 6-digit Account Code in the Transaction Summary report or the Reconciliation report to drill down to the Transaction Detail. Users can create ad-hoc reports using the Query tool to retrieve the transaction detail fields for multiple transactions at once. The most common query to retrieve Transaction Detail data is the Transaction Summary reporting template in the Query tool.
                         </p>
                     </div>
-
                     <div className="mt-10">
                         <dl className="space-y-10 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-10">
                             {featuresForTransactions.map((feature) => (
@@ -174,6 +174,8 @@ const Home = () => {
                     </div>
                 </div>
             </div>
+            {/* team section */}
+            <Team></Team>
         </div>
     );
 };
