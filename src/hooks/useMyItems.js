@@ -7,7 +7,7 @@ const useMyItems = () => {
     useEffect(() => {
         axios.get('https://secure-woodland-83351.herokuapp.com/myItems')
             .then(res => setMyItems(res?.data))
-    }, []);
+    }, [myItems]);
 
     return [myItems];
 };

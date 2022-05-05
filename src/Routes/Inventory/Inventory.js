@@ -26,8 +26,6 @@ const Inventory = () => {
         slug = 'product';
     }
 
-    // console.log('here:', id, finalMatch, slug);
-
     const handleUpdateInfo = (event) => {
         event.preventDefault();
         const name = event.target.name.value;
@@ -35,28 +33,22 @@ const Inventory = () => {
         const img = event.target.photo.value;
 
         const product = { img, name, price };
-        // console.log(product);
 
         axios.put(`https://secure-woodland-83351.herokuapp.com/${slug}/${id}`, product)
             .then(res => {
-                console.log(res.data);
                 toast('item updated!');
-                window.location.reload();
                 event.target.reset();
             })
     };
 
     const handleItemReduce = () => {
-        // console.log(finalMatch[0]?.qty);
         const qty = parseInt(finalMatch[0]?.qty) - 1;
         const product = { qty };
 
         if (product.qty > 0) {
             axios.put(`https://secure-woodland-83351.herokuapp.com/${slug}/${id}`, product)
                 .then(res => {
-                    // console.log(res.data);
                     toast('item delivered!');
-                    window.location.reload();
                 })
         }
     };
@@ -69,15 +61,11 @@ const Inventory = () => {
 
             axios.put(`https://secure-woodland-83351.herokuapp.com/${slug}/${id}`, product)
                 .then(res => {
-                    // console.log(res.data);
                     toast('item restocked!');
-                    window.location.reload();
                 })
         } else {
             toast('Negative or Empty input not allow!!');
         }
-        // console.log(product.qty);
-
     };
 
     return (
@@ -134,7 +122,6 @@ const Inventory = () => {
                                 <button className="text-sky-500 border border-sky-500 hover:bg-sky-500 hover:text-white active:bg-sky-600 font-bold uppercase text-sm px-6 py-3 rounded outline-none focus:outline-none mr-1 mb-1 mt-4 ease-linear transition-all duration-150" type="button"
                                     onClick={() => {
                                         setUpdateForm(!updateForm);
-                                        // console.log(updateForm);
                                     }}
                                 >
                                     Update item

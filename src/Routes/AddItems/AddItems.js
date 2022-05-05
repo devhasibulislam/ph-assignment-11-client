@@ -27,11 +27,7 @@ const AddItems = () => {
                 toast('item added, go to My Items tab to view!');
                 event.target.reset();
             })
-
-        // console.log(product);
     };
-
-    // console.log(user);
 
     return (
         <div>
