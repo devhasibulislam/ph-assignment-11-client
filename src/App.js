@@ -14,6 +14,7 @@ import AddItems from './Routes/AddItems/AddItems';
 import NotFound from './Routes/NotFound/NotFound';
 import Blog from './Routes/Blog/Blog';
 import Inventory from './Routes/Inventory/Inventory';
+import TableView from './Pages/TableView/TableView';
 
 function App() {
   return (
@@ -42,6 +43,12 @@ function App() {
         <Route path='/inventory/:id' element={
           <RequireAuth>
             <Inventory></Inventory>
+          </RequireAuth>
+        }></Route>
+
+        <Route path='/table' element={
+          <RequireAuth>
+            <TableView></TableView>
           </RequireAuth>
         }></Route>
 
