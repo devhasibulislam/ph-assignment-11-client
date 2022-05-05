@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
 import Card from '../Card/Card';
 
 const ManageItems = () => {
@@ -7,6 +8,7 @@ const ManageItems = () => {
     const [activePage, setActivePage] = useState(0);
     const [viewCount, setViewCount] = useState(10);
     const [products, setProducts] = useState([]);
+    const [countAllProduct, setCountAllProduct] = useState(0);
 
     useEffect(() => {
         axios.get(`http://localhost:5000/product?pageNumber=${activePage}&viewItems=${viewCount}`)
@@ -19,11 +21,15 @@ const ManageItems = () => {
                 const overallNumbers = res?.data?.count;
                 const defaultTen = Math.ceil(overallNumbers / viewCount);
                 setTotalProductCount(defaultTen);
+                setCountAllProduct(overallNumbers);
             })
     }, [viewCount]);
 
     return (
         <div className='bg-gray-400 py-4 md:px-2 px-2 lg:px-0'>
+            <Helmet>
+                <title>warehouse - Manage Items</title>
+            </Helmet>
             <h1 className='text-center text-6xl py-4'># Our Products</h1>
             <hr className='w-36 mx-auto border-t-4 border-[#00a1e5]' />
             <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 max-w-7xl mx-auto gap-y-12 md:gap-x-8 py-12'>
@@ -86,6 +92,7 @@ const ManageItems = () => {
                                 <option value="15">Fifteen</option>
                                 <option value="20">Twenty</option>
                                 <option value="30">Thirty</option>
+                                <option value={countAllProduct}>View All</option>
                             </select>
                         </div>
                     </div>

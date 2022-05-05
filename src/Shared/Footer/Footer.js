@@ -53,9 +53,9 @@ const Footer = () => {
                 </div>
             </div>
 
-            <div className="text-center p-4 bg-[rgba(0, 0, 0, 0.2)]">
+            <div className="text-center p-4 bg-black text-white">
                 © {year} All right reserved.
-                <span className="text-black ml-1">We are there above imaged country!!</span>
+                <span className="text-white ml-1">We are there above imaged country!!</span>
             </div>
         </footer>
     );

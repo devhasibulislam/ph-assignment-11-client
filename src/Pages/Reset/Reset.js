@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSendPasswordResetEmail } from 'react-firebase-hooks/auth';
+import { Helmet } from 'react-helmet-async';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import Loading from '../../Shared/Loading/Loading';
@@ -20,6 +21,9 @@ const Reset = () => {
     };
     return (
         <div>
+            <Helmet>
+                <title>warehouse - Forgot Password</title>
+            </Helmet>
             <div className="block p-6 rounded-lg shadow-lg bg-white max-w-sm mx-auto">
                 <h2 className='text-3xl'>Welcome to reset form!</h2>
                 {sending && <Loading></Loading>}

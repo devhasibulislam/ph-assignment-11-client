@@ -4,6 +4,7 @@ import { useAuthState, useSignInWithEmailAndPassword, useSignInWithGoogle } from
 import auth from '../../firebase.init';
 import Loading from '../../Shared/Loading/Loading';
 import axios from 'axios';
+import { Helmet } from 'react-helmet-async';
 
 const Login = () => {
     const [user] = useAuthState(auth);
@@ -45,9 +46,13 @@ const Login = () => {
         event.target.reset();
     };
 
-    if (user) {
-        navigate('/home');
+    if (userG || user) {
+        navigate(from, { replace: true });
     }
+
+    // if (user) {
+    //     navigate('/home');
+    // }
 
     if (userG || userEP) {
         // navigate(from, { replace: true });
@@ -58,6 +63,9 @@ const Login = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>warehouse - Login</title>
+            </Helmet>
             <div className="block p-6 rounded-lg shadow-lg bg-white max-w-sm mx-auto">
                 <h2 className='text-3xl mb-4'>Welcome to login form!</h2>
                 {

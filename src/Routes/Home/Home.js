@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import { AnnotationIcon, GlobeAltIcon, LightningBoltIcon, ScaleIcon } from '@heroicons/react/outline'
 import useProducts from '../../hooks/useProducts';
 import Card from '../Card/Card';
+import { Helmet } from 'react-helmet-async';
+import banner from './banner.jpg';
 
 const Home = () => {
     const navigate = useNavigate();
     const [products] = useProducts();
-    const [seeMore, setSeeMore] = useState(true);
 
     const featuresForTechnicalSpecifications = [
         { name: 'Origin', description: 'Designed by Good Goods, Inc.' },
@@ -47,6 +48,9 @@ const Home = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>warehouse - Home</title>
+            </Helmet>
             {/* banner section */}
             <div className="py-12 overflow-y-hidden">
                 <dh-component>
@@ -65,7 +69,7 @@ const Home = () => {
                         </div>
                         <div className="container mx-auto flex justify-center md:-mt-56 -mt-20 sm:-mt-40">
                             <div className="relative sm:w-2/3 w-11/12">
-                                <img src="https://garryblack.com/blog/wp-content/uploads/2011/10/Ottawa_Model_Workshop11.jpg" alt="Sample Page" className='rounded-lg mx-auto' />
+                                <img src={banner} alt="https://garryblack.com/blog/wp-content/uploads/2011/10/Ottawa_Model_Workshop11.jpg" className='rounded-lg mx-auto shadow' />
                             </div>
                         </div>
                     </div>
@@ -76,22 +80,15 @@ const Home = () => {
                 <h1 className='text-center text-6xl py-4'># Our Services</h1>
                 <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 lg:px-0 px-2 md:gap-x-4 max-w-7xl mx-auto gap-y-12 py-12'>
                     {
-                        seeMore
-                            ?
-                            products.slice(0, 6).map(product => <Card
-                                key={product._id}
-                                product={product}
-                            ></Card>)
-                            :
-                            products.slice(0, 18).map(product => <Card
-                                key={product._id}
-                                product={product}
-                            ></Card>)
+                        products.slice(0, 6).map(product => <Card
+                            key={product._id}
+                            product={product}
+                        ></Card>)
                     }
                 </div>
                 <div className='text-center'>
-                    <button onClick={() => setSeeMore(!seeMore)} className="inline-flex items-center px-12 py-2 mt-2 px-3 text-sm font-medium text-center text-white bg-green-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                        {seeMore ? 'See More' : 'See Less'}
+                    <button className="inline-flex items-center px-12 py-2 mt-2 text-sm font-medium text-center text-white bg-green-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                        <Link to={'/manageItems'}>See All Item</Link>
                         <svg className="ml-2 -mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
                     </button>
                 </div>
@@ -101,7 +98,7 @@ const Home = () => {
                 <div className="bg-white">
                     <div className="max-w-2xl mx-auto py-24 px-4 grid items-center grid-cols-1 gap-y-16 gap-x-8 sm:px-6 sm:py-32 lg:max-w-7xl lg:px-8 lg:grid-cols-2">
                         <div>
-                            <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">Technical Specifications for our work</h2>
+                            <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">The way how we store goods</h2>
                             <p className="mt-4 text-gray-500">
                                 The walnut wood card tray is precision milled to perfectly fit a stack of Focus cards. The powder coated
                                 steel divider separates active cards from new ones, or can be used to archive important task lists.

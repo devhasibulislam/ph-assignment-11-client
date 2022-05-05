@@ -9,6 +9,7 @@ const Inventory = () => {
     const { id } = useParams();
     const [products] = useProducts();
     const [myItems] = useMyItems();
+    const [stock, setStock] = useState(0);
 
     const [updateForm, setUpdateForm] = useState(false);
 
@@ -60,18 +61,22 @@ const Inventory = () => {
     };
 
     const handleItemIncrease = () => {
-        const qty = parseInt(finalMatch[0]?.qty) + 1;
-        const product = { qty };
-        console.log(product.qty);
+        let qty, product;
+        if (stock > 0) {
+            qty = parseInt(finalMatch[0]?.qty) + parseInt(stock);
+            product = { qty };
 
-        if (product.qty > 1) {
             axios.put(`http://localhost:5000/${slug}/${id}`, product)
                 .then(res => {
                     // console.log(res.data);
                     toast('item restocked!');
                     window.location.reload();
                 })
+        } else {
+            toast('Negative or Empty input not allow!!');
         }
+        // console.log(product.qty);
+
     };
 
     return (
@@ -139,11 +144,14 @@ const Inventory = () => {
                                     Deliver item
                                 </button>
                             </div>
-                            <button className="text-emerald-500 border border-emerald-500 hover:bg-emerald-500 hover:text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded-full outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 block w-full mt-4" type="button"
-                                onClick={handleItemIncrease}
-                            >
-                                Restock item
-                            </button>
+                            <div className="my-6">
+                                <input name='stock' type="number" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 text-center" placeholder="Enter Stock Number" required onChange={e => setStock(e.target.value)} />
+                                <button className="text-emerald-500 border border-emerald-500 hover:bg-emerald-500 hover:text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded-full outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 block w-full mt-4" type="button"
+                                    onClick={handleItemIncrease}
+                                >
+                                    Restock item
+                                </button>
+                            </div>
                         </div>
                     </div>
                     {/* update form stay here! */}

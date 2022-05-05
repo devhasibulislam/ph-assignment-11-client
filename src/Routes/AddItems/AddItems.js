@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { Helmet } from 'react-helmet-async';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 
@@ -34,6 +35,9 @@ const AddItems = () => {
 
     return (
         <div>
+            <Helmet>
+                <title>warehouse - Add Items</title>
+            </Helmet>
             <h1 className='text-center text-6xl py-4'># Add own items</h1>
             <hr className='w-36 mx-auto border-t-4 border-[#00a1e5]' />
             <form className='max-w-sm mx-auto shadow-lg p-4 rounded-lg mt-8' onSubmit={handleAddProduct}>

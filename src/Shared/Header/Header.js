@@ -23,7 +23,7 @@ const Header = () => {
                             {
                                 error && toast(error?.message)
                             }
-                            <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">franchise house</span>
+                            <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">ladies fashion warehouse</span>
                         </CustomLink>
                         <button
                             className="text-white cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-gray-500 block lg:hidden outline-none focus:outline-none"

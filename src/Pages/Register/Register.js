@@ -1,5 +1,6 @@
 import React from 'react';
 import { useAuthState, useCreateUserWithEmailAndPassword, useSignInWithGoogle, useUpdateProfile } from 'react-firebase-hooks/auth';
+import { Helmet } from 'react-helmet-async';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -47,16 +48,19 @@ const Register = () => {
         toast('registration success!');
     };
 
-    if (user) {
-        navigate('/home');
-    }
+    // if (user) {
+    //     navigate('/home');
+    // }
 
-    if (userEP || userG) {
+    if (userEP || userG || user) {
         navigate('/home');
     }
 
     return (
         <div>
+            <Helmet>
+                <title>warehouse - Registration</title>
+            </Helmet>
             <div className="block p-6 rounded-lg shadow-lg bg-white max-w-md mx-auto">
                 <h2 className='text-3xl mb-4'>Welcome to registration form!</h2>
                 {
