@@ -48,10 +48,6 @@ const Register = () => {
         toast('registration success!');
     };
 
-    // if (user) {
-    //     navigate('/home');
-    // }
-
     if (userEP || userG || user) {
         navigate('/home');
     }

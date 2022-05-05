@@ -39,7 +39,6 @@ const Login = () => {
 
         await signInWithEmailAndPassword(email, password);
         const { data } = await axios.post('https://secure-woodland-83351.herokuapp.com/login', { email });
-        console.log(data);
         localStorage.setItem('token', data.token);
         navigate(from, { replace: true });
 
@@ -50,13 +49,7 @@ const Login = () => {
         navigate(from, { replace: true });
     }
 
-    // if (user) {
-    //     navigate('/home');
-    // }
-
     if (userG || userEP) {
-        // navigate(from, { replace: true });
-        // userG && localStorage.setItem('token', userG.user.accessToken);
         userG && console.log(userG);
         userEP && console.log(userEP);
     }

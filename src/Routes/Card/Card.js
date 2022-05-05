@@ -12,9 +12,7 @@ const Card = ({ product, enableDelete }) => {
         if (yes) {
             axios.delete(`https://secure-woodland-83351.herokuapp.com/myItems/${id}`)
                 .then(res => {
-                    console.log(res.data);
                     toast('item deleted!');
-                    window.location.reload();
                 })
         }
     };

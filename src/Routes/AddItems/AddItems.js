@@ -1,12 +1,14 @@
 import axios from 'axios';
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import PageTitle from '../../Pages/PageTitle/PageTitle';
 
 const AddItems = () => {
     const [user] = useAuthState(auth);
+    const navigate = useNavigate();
 
     const handleAddProduct = (event) => {
         event.preventDefault();
@@ -24,7 +26,8 @@ const AddItems = () => {
         axios.post('https://secure-woodland-83351.herokuapp.com/addProduct', product)
             .then(res => {
                 console.log(res.data);
-                toast('item added, go to My Items tab to view!');
+                toast('item added!');
+                navigate('/myItems');
                 event.target.reset();
             })
     };

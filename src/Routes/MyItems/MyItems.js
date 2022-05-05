@@ -19,7 +19,7 @@ const MyItems = () => {
             setLoading(false);
         };
         getOrders();
-    }, [user]);
+    }, [user, orders]);
 
     return (
         <div className='bg-gray-400 py-4 md:px-2 px-2 lg:px-0'>
