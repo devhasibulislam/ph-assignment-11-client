@@ -9,7 +9,7 @@ const Order = () => {
     const [orders, setOrders] = useState([]);
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/order?email=${user?.email}`)
+        axios.get(`https://secure-woodland-83351.herokuapp.com/order?email=${user?.email}`)
             .then(res => setOrders(res?.data))
     }, [user]);
 

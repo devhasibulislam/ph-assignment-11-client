@@ -11,7 +11,7 @@ const MyItems = () => {
 
     useEffect(() => {
         const getOrders = async () => {
-            const url = `http://localhost:5000/order?email=${user?.email}`;
+            const url = `https://secure-woodland-83351.herokuapp.com/order?email=${user?.email}`;
             const { data } = await axios.get(url);
             setOrders(data);
         };

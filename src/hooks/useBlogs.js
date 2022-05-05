@@ -5,9 +5,9 @@ const useBlogs = () => {
     const [blogs, setBlogs] = useState([]);
     useEffect(() => {
         const getBlogs = async () => {
-            const url = `http://localhost:5000/qna`;
-        const {data} = await axios.get(url);
-        setBlogs(data);
+            const url = `https://secure-woodland-83351.herokuapp.com/qna`;
+            const { data } = await axios.get(url);
+            setBlogs(data);
         };
         getBlogs();
     }, []);

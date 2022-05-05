@@ -31,14 +31,14 @@ const Login = () => {
     const navigate = useNavigate();
     let from = location.state?.from?.pathname || "/";
 
-    const handleLogin = async(event) => {
+    const handleLogin = async (event) => {
         event.preventDefault();
 
         const email = event.target.email.value;
         const password = event.target.password.value;
 
         await signInWithEmailAndPassword(email, password);
-        const { data } = await axios.post('http://localhost:5000/login', { email });
+        const { data } = await axios.post('https://secure-woodland-83351.herokuapp.com/login', { email });
         console.log(data);
         localStorage.setItem('token', data.token);
         navigate(from, { replace: true });

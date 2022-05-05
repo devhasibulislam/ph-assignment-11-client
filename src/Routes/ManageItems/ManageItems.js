@@ -11,12 +11,12 @@ const ManageItems = () => {
     const [countAllProduct, setCountAllProduct] = useState(0);
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/product?pageNumber=${activePage}&viewItems=${viewCount}`)
+        axios.get(`https://secure-woodland-83351.herokuapp.com/product?pageNumber=${activePage}&viewItems=${viewCount}`)
             .then(res => setProducts(res?.data))
     }, [activePage, viewCount]);
 
     useEffect(() => {
-        axios.get('http://localhost:5000/productCount')
+        axios.get('https://secure-woodland-83351.herokuapp.com/productCount')
             .then(res => {
                 const overallNumbers = res?.data?.count;
                 const defaultTen = Math.ceil(overallNumbers / viewCount);

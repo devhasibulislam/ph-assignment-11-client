@@ -10,7 +10,7 @@ const Card = ({ product, enableDelete }) => {
     const handleDeleteProduct = (id) => {
         const yes = window.confirm('Want to delete this item?');
         if (yes) {
-            axios.delete(`http://localhost:5000/myItems/${id}`)
+            axios.delete(`https://secure-woodland-83351.herokuapp.com/myItems/${id}`)
                 .then(res => {
                     console.log(res.data);
                     toast('item deleted!');

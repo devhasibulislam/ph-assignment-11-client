@@ -7,7 +7,7 @@ import auth from '../../firebase.init';
 
 const AddItems = () => {
     const [user] = useAuthState(auth);
-    
+
     const handleAddProduct = (event) => {
         event.preventDefault();
 
@@ -21,7 +21,7 @@ const AddItems = () => {
 
         const product = { email, img, name, desc, price, qty, supplier };
 
-        axios.post('http://localhost:5000/addProduct', product)
+        axios.post('https://secure-woodland-83351.herokuapp.com/addProduct', product)
             .then(res => {
                 console.log(res.data);
                 toast('item added!');
