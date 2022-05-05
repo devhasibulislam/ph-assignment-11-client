@@ -1,12 +1,19 @@
 import React from 'react';
 import useMyItems from '../../hooks/useMyItems';
+import Loading from '../../Shared/Loading/Loading';
 import Tcard from '../Tcard/Tcard';
 
 const TableView = () => {
     const [myItems] = useMyItems();
     return (
         <div className='container mx-auto'>
-            <h1 className='text-center text-4xl my-3 font-bold'>Overall view products</h1>
+            <h1 className='text-center text-4xl my-3 font-bold'>Overall view products {
+                (myItems.length === 0)
+                &&
+                <span className='ml-8'>
+                    <Loading></Loading>
+                </span>
+            }</h1>
             <hr className='w-36 mx-auto border-t-4 mb-8 border-[#00a1e5] rounded' />
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                 <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
