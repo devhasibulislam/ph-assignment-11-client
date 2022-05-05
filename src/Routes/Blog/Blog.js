@@ -1,14 +1,12 @@
-import { Helmet } from 'react-helmet-async';
 import useBlogs from '../../hooks/useBlogs';
+import PageTitle from '../../Pages/PageTitle/PageTitle';
 import Bcard from '../Bcard/Bcard';
 
 const Blog = () => {
     const [blogs] = useBlogs();
     return (
         <div>
-            <Helmet>
-                <title>warehouse - Blog</title>
-            </Helmet>
+            <PageTitle title={'warehouse - Blog'}></PageTitle>
             <h2 className='text-center text-5xl my-12'>Following are some frequently asked <span className='text-red-500'>question's answer</span></h2>
             <section className="text-gray-600 body-font">
                 <div className="container px-5 mx-auto">

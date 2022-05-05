@@ -3,8 +3,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import { AnnotationIcon, GlobeAltIcon, LightningBoltIcon, ScaleIcon } from '@heroicons/react/outline'
 import useProducts from '../../hooks/useProducts';
 import Card from '../Card/Card';
-import { Helmet } from 'react-helmet-async';
 import banner from './banner.jpg';
+import PageTitle from '../../Pages/PageTitle/PageTitle';
 
 const Home = () => {
     const navigate = useNavigate();
@@ -48,9 +48,7 @@ const Home = () => {
 
     return (
         <div>
-            <Helmet>
-                <title>warehouse - Home</title>
-            </Helmet>
+            <PageTitle title={'warehouse - Home'}></PageTitle>
             {/* banner section */}
             <div className="py-12 overflow-y-hidden">
                 <dh-component>
