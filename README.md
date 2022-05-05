@@ -51,3 +51,4 @@
         * table view
             * show custom products for all mail
         * blog
+        * logout
