@@ -1,5 +1,6 @@
 import useBlogs from '../../hooks/useBlogs';
 import PageTitle from '../../Pages/PageTitle/PageTitle';
+import Loading from '../../Shared/Loading/Loading';
 import Bcard from '../Bcard/Bcard';
 
 const Blog = () => {
@@ -7,7 +8,13 @@ const Blog = () => {
     return (
         <div>
             <PageTitle title={'warehouse - Blog'}></PageTitle>
-            <h2 className='text-center text-5xl my-12'>Following are some frequently asked <span className='text-red-500'>question's answer</span></h2>
+            <h2 className='text-center text-5xl my-12'>Following are some frequently asked <span className='text-red-500'>question's answer {
+                (blogs.length === 0)
+                &&
+                <h1 className='ml-8'>
+                    <Loading></Loading>
+                </h1>
+            }</span></h2>
             <section className="text-gray-600 body-font">
                 <div className="container px-5 mx-auto">
                     <div className="flex flex-wrap -m-4">

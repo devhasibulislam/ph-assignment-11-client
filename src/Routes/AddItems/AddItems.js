@@ -24,7 +24,7 @@ const AddItems = () => {
         axios.post('https://secure-woodland-83351.herokuapp.com/addProduct', product)
             .then(res => {
                 console.log(res.data);
-                toast('item added!');
+                toast('item added, go to My Items tab to view!');
                 event.target.reset();
             })
 

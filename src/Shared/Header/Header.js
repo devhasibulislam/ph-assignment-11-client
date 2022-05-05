@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import CustomLink from '../../Routes/CustomLink/CustomLink';
 import Loading from '../Loading/Loading';
+import logo from './logo.png';
 
 const Header = () => {
     const [user, loading, error] = useAuthState(auth);
@@ -23,7 +24,9 @@ const Header = () => {
                             {
                                 error && toast(error?.message)
                             }
-                            <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">ladies fashion warehouse</span>
+                            <span className="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
+                                <img src={logo} alt="header-logo" className='w-[15%]' />
+                            </span>
                         </CustomLink>
                         <button
                             className="text-white cursor-pointer text-xl leading-none px-3 py-1 border border-solid border-transparent rounded bg-gray-500 block lg:hidden outline-none focus:outline-none"

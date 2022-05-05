@@ -41,6 +41,7 @@ const Inventory = () => {
             .then(res => {
                 console.log(res.data);
                 toast('item updated!');
+                window.location.reload();
                 event.target.reset();
             })
     };

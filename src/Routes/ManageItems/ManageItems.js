@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import PageTitle from '../../Pages/PageTitle/PageTitle';
+import Loading from '../../Shared/Loading/Loading';
 import Card from '../Card/Card';
 
 const ManageItems = () => {
@@ -9,10 +10,14 @@ const ManageItems = () => {
     const [viewCount, setViewCount] = useState(10);
     const [products, setProducts] = useState([]);
     const [countAllProduct, setCountAllProduct] = useState(0);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         axios.get(`https://secure-woodland-83351.herokuapp.com/product?pageNumber=${activePage}&viewItems=${viewCount}`)
-            .then(res => setProducts(res?.data))
+            .then(res => {
+                setProducts(res?.data);
+                setLoading(false);
+            })
     }, [activePage, viewCount]);
 
     useEffect(() => {
@@ -28,7 +33,13 @@ const ManageItems = () => {
     return (
         <div className='bg-gray-400 py-4 md:px-2 px-2 lg:px-0'>
             <PageTitle title={'warehouse - Manage Items'}></PageTitle>
-            <h1 className='text-center text-6xl py-4'># Our Products</h1>
+            <h1 className='text-center text-6xl py-4'># Our Products {
+                loading
+                &&
+                <span className='ml-8'>
+                    <Loading></Loading>
+                </span>
+            }</h1>
             <hr className='w-36 mx-auto border-t-4 border-[#00a1e5]' />
             <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 max-w-7xl mx-auto gap-y-12 md:gap-x-8 py-12'>
                 {

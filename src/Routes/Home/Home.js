@@ -5,6 +5,7 @@ import useProducts from '../../hooks/useProducts';
 import Card from '../Card/Card';
 import banner from './banner.jpg';
 import PageTitle from '../../Pages/PageTitle/PageTitle';
+import Loading from '../../Shared/Loading/Loading';
 
 const Home = () => {
     const navigate = useNavigate();
@@ -48,7 +49,7 @@ const Home = () => {
 
     return (
         <div>
-            <PageTitle title={'warehouse - Home'}></PageTitle>
+            <PageTitle title={'ladies fashion warehouse'}></PageTitle>
             {/* banner section */}
             <div className="py-12 overflow-y-hidden">
                 <dh-component>
@@ -75,7 +76,14 @@ const Home = () => {
             </div>
             {/* services section */}
             <div className='bg-gray-400 py-4'>
-                <h1 className='text-center text-6xl py-4'># Our Services</h1>
+                <h1 className='text-center text-6xl py-4'># Our Services {
+                    (products.length === 0)
+                    &&
+                    <span className='ml-8'>
+                        <Loading></Loading>
+                    </span>
+                }</h1>
+                <hr className='w-36 mx-auto border-t-4 border-[#00a1e5]' />
                 <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 lg:px-0 px-2 md:gap-x-4 max-w-7xl mx-auto gap-y-12 py-12'>
                     {
                         products.slice(0, 6).map(product => <Card
