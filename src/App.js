@@ -24,7 +24,12 @@ function App() {
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/home' element={<Home></Home>}></Route>
-        <Route path='/manageItems' element={<ManageItems></ManageItems>}></Route>
+
+        <Route path='/manageItems' element={
+          <RequireAuth>
+            <ManageItems></ManageItems>
+          </RequireAuth>
+        }></Route>
 
         <Route path='/addItems' element={
           <RequireAuth>
@@ -38,8 +43,6 @@ function App() {
           </RequireAuth>
         }></Route>
 
-        <Route path='/blog' element={<Blog></Blog>}></Route>
-
         <Route path='/inventory/:id' element={
           <RequireAuth>
             <Inventory></Inventory>
@@ -52,6 +55,7 @@ function App() {
           </RequireAuth>
         }></Route>
 
+        <Route path='/blog' element={<Blog></Blog>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>
         <Route path='/reset' element={<Reset></Reset>}></Route>

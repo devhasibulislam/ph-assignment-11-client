@@ -4,12 +4,14 @@ import { useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import useMyItems from '../../hooks/useMyItems';
 import useProducts from '../../hooks/useProducts';
+import FsLightbox from 'fslightbox-react';
 
 const Inventory = () => {
     const { id } = useParams();
     const [products] = useProducts();
     const [myItems] = useMyItems();
     const [stock, setStock] = useState(0);
+    const [toggler, setToggler] = useState(false);
 
     const [updateForm, setUpdateForm] = useState(false);
 
@@ -76,7 +78,11 @@ const Inventory = () => {
                         <div className="w-full sm:w-1/2 md:w-1/2 xl:w-1/4 p-4">
                             <div className="c-card block bg-white shadow-md hover:shadow-xl rounded-lg overflow-hidden">
                                 <div className="relative pb-48 overflow-hidden">
-                                    <img className="absolute inset-0 h-full w-full object-cover object-top" src={finalMatch[0]?.img} alt="" />
+                                    <img className="absolute inset-0 h-full w-full object-cover object-top cursor-pointer" src={finalMatch[0]?.img} alt="" onClick={() => setToggler(!toggler)} />
+                                    <FsLightbox
+                                        toggler={toggler}
+                                        sources={[finalMatch[0]?.img]}
+                                    />
                                 </div>
                                 <div className="p-4">
                                     <span className="inline-block px-2 py-1 leading-none bg-orange-200 text-orange-800 rounded-full font-semibold uppercase tracking-wide text-xs">{finalMatch[0]?._id}</span>

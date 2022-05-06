@@ -55,17 +55,18 @@ const Home = () => {
             <div className="py-12 overflow-y-hidden">
                 <dh-component>
                     <div className="w-full px-6">
-                        <div className="mt-8 relative rounded-lg bg-[#8c3e31] container mx-auto flex flex-col items-center pt-12 sm:pt-24 pb-24 sm:pb-32 md:pb-48 lg:pb-56 xl:pb-64">
+                        <div className="mt-8 relative rounded-lg bg-[#95150e] container mx-auto flex flex-col items-center pt-12 sm:pt-24 pb-24 sm:pb-32 md:pb-48 lg:pb-56 xl:pb-64">
                             <img className="mr-2 lg:mr-12 mt-2 lg:mt-12 absolute right-0 top-0" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/center_aligned_with_image-svg2.svg" alt="bg" />
                             <img className="ml-2 lg:ml-12 mb-2 lg:mb-12 absolute bottom-0 left-0" src="https://tuk-cdn.s3.amazonaws.com/can-uploader/center_aligned_with_image-svg3.svg" alt="bg" />
                             <div className="w-11/12 sm:w-2/3 mb-5 sm:mb-10">
-                                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-center text-white font-bold leading-tight">Powerful clothes come from powerful person!</h1>
+                                <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl text-center text-white font-bold leading-tight">
+                                    A woman puts on the attire she chooses in the morning, clothing also serves as a powerful way!</h1>
                             </div>
                             <div className="flex justify-center items-center mb-8">
                                 <button onClick={() => navigate('/addItems')} className="hover:text-white hover:bg-transparent lg:text-xl hover:border-white border bg-white transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 ring-offset-indigo-700	focus:ring-white rounded text-indigo-700 px-4 sm:px-8 py-1 sm:py-3 text-sm">Get Started</button>
                                 <button onClick={() => navigate('/blog')} className="hover:bg-white hover:text-indigo-600 lg:text-xl hover:border-indigo-600 ml-3 sm:ml-6 bg-transparent transition duration-150 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 ring-offset-indigo-700 focus:ring-white hover:bg-indigo-700-800 rounded border border-white text-white px-4 sm:px-8 py-1 sm:py-3 text-sm">Learn More</button>
                             </div>
-                            <p className='text-white text-center'>If you think your dresses are bad then my dresses are your dad!</p>
+                            <p className='text-white text-center bg-black text-white'>Powerful dress comes from powerful brands!</p>
                         </div>
                         <div className="container mx-auto flex justify-center md:-mt-56 -mt-20 sm:-mt-40">
                             <div className="relative sm:w-2/3 w-11/12">
@@ -94,7 +95,7 @@ const Home = () => {
                     }
                 </div>
                 <div className='text-center'>
-                    <button className="inline-flex items-center px-12 py-2 mt-2 text-sm font-medium text-center text-white bg-green-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                    <button className="inline-flex items-center px-12 py-2 mt-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                         <Link to={'/manageItems'}>See All Item</Link>
                         <svg className="ml-2 -mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
                     </button>
