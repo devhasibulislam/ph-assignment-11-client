@@ -48,7 +48,7 @@ const MyItems = () => {
     }, [user, orders, navigate]);
 
     return (
-        <div className='bg-gray-400 py-4 md:px-2 px-2 lg:px-0'>
+        <div className='py-4 md:px-2 px-2 lg:px-0'>
             <PageTitle title={'warehouse - My Items'}></PageTitle>
             <h1 className='text-center text-6xl py-4'># Your 
                 <span className="text-blue-600 ml-2">
@@ -76,11 +76,18 @@ const MyItems = () => {
                 <div id="alert-2" className="container mx-auto mt-16 flex p-4 mb-4 bg-red-100 rounded-lg dark:bg-red-200" role="alert">
                     <svg className="flex-shrink-0 w-5 h-5 text-red-700 dark:text-red-800" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd"></path></svg>
                     <div className="ml-3 text-sm font-medium text-red-700 dark:text-red-800">
-                        Hey, dude! You don't have any custom product included here!
+                            <Typewriter
+                                words={["Hey, dude! You don't have any custom product included here!"]}
+                                loop={7}
+                                cursor={true}
+                                cursorStyle='_'
+                                typeSpeed={70}
+                                deleteSpeed={50}
+                                delaySpeed={1000}
+                            />
                     </div>
                     <Link to={'/addItems'} className="ml-auto -mx-1.5 -my-1.5 bg-red-100 text-red-500 rounded-lg focus:ring-2 focus:ring-red-400 p-1.5 hover:bg-red-200 dark:bg-red-200 dark:text-red-600 dark:hover:bg-red-300 flex items-center">
                         <span className='font-bold'>Click to add</span>
-                        <span className="sr-only">Close</span>
                         <svg className="ml-2 -mr-1 w-4 h-4" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
                     </Link>
                 </div>
