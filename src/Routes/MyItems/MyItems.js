@@ -46,9 +46,6 @@ const MyItems = () => {
         }
     }, [user, orders, navigate]);
 
-    // console.log(user?.providerData[0]?.providerId);
-    // google.com
-
     return (
         <div className='bg-gray-400 py-4 md:px-2 px-2 lg:px-0'>
             <PageTitle title={'warehouse - My Items'}></PageTitle>
