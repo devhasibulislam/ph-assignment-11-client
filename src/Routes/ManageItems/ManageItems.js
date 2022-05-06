@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { Typewriter } from 'react-simple-typewriter';
 import PageTitle from '../../Pages/PageTitle/PageTitle';
 import Loading from '../../Shared/Loading/Loading';
 import Card from '../Card/Card';
@@ -33,7 +34,19 @@ const ManageItems = () => {
     return (
         <div className='bg-gray-400 py-4 md:px-2 px-2 lg:px-0'>
             <PageTitle title={'warehouse - Manage Items'}></PageTitle>
-            <h1 className='text-center text-6xl py-4'># Our Products {
+            <h1 className='text-center text-6xl py-4'># Our 
+                <span className="text-blue-600 ml-2">
+                    <Typewriter
+                        words={["Products"]}
+                        loop={5}
+                        cursor={true}
+                        cursorStyle='_'
+                        typeSpeed={70}
+                        deleteSpeed={50}
+                        delaySpeed={1000}
+                    />
+                </span>
+                {
                 loading
                 &&
                 <span className='ml-8'>

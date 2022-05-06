@@ -1,4 +1,5 @@
 import React from 'react';
+import { Typewriter } from 'react-simple-typewriter';
 
 const Team = () => {
     return (
@@ -7,7 +8,17 @@ const Team = () => {
 
                 <section className="mb-32 text-center lg:text-left">
                     <h2 className="text-3xl font-bold mb-12 text-center">
-                        Meet our <u className="text-blue-600">team members</u>
+                        Meet our <u className="text-blue-600">
+                            <Typewriter
+                                words={["team members"]}
+                                loop={0}
+                                cursor={true}
+                                cursorStyle='_'
+                                typeSpeed={70}
+                                deleteSpeed={50}
+                                delaySpeed={1000}
+                            />
+                        </u>
                     </h2>
 
                     <div className="grid md:grid-cols-3 gap-6 xl:gap-x-12">

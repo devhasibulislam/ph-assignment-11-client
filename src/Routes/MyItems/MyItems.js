@@ -3,6 +3,7 @@ import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { Link, useNavigate } from 'react-router-dom';
+import { Typewriter } from 'react-simple-typewriter';
 import auth from '../../firebase.init';
 import PageTitle from '../../Pages/PageTitle/PageTitle';
 import Loading from '../../Shared/Loading/Loading';
@@ -49,7 +50,19 @@ const MyItems = () => {
     return (
         <div className='bg-gray-400 py-4 md:px-2 px-2 lg:px-0'>
             <PageTitle title={'warehouse - My Items'}></PageTitle>
-            <h1 className='text-center text-6xl py-4'># Your Products {
+            <h1 className='text-center text-6xl py-4'># Your 
+                <span className="text-blue-600 ml-2">
+                    <Typewriter
+                        words={["Products"]}
+                        loop={5}
+                        cursor={true}
+                        cursorStyle='_'
+                        typeSpeed={70}
+                        deleteSpeed={50}
+                        delaySpeed={1000}
+                    />
+                </span>
+                {
                 loading
                 &&
                 <span className='ml-8'>

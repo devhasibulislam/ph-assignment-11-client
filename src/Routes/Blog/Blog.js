@@ -1,3 +1,4 @@
+import { Typewriter } from 'react-simple-typewriter';
 import useBlogs from '../../hooks/useBlogs';
 import PageTitle from '../../Pages/PageTitle/PageTitle';
 import Loading from '../../Shared/Loading/Loading';
@@ -8,7 +9,17 @@ const Blog = () => {
     return (
         <div>
             <PageTitle title={'warehouse - Blog'}></PageTitle>
-            <h2 className='text-center text-5xl my-12'>Following are some frequently asked <span className='text-red-500'>question's answer {
+            <h2 className='text-center text-5xl my-12'>Following are some frequently asked <span className='text-red-500'>
+                <Typewriter
+                    words={["question's answer"]}
+                    loop={0}
+                    cursor={true}
+                    cursorStyle='_'
+                    typeSpeed={70}
+                    deleteSpeed={50}
+                    delaySpeed={1000}
+                />
+                {
                 (blogs.length === 0)
                 &&
                 <h1 className='ml-8'>
