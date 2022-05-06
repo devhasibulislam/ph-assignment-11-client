@@ -52,3 +52,6 @@
             * show custom products for all mail
         * blog
         * logout
+
+### extra feature:
+*click on table image to see light box*
