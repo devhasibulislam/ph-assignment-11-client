@@ -52,3 +52,6 @@
             * show custom products for all mail
         * blog
         * logout
+
+# Note:
+### some images of table can't be allowed from origin so these images ain't showed as light box.

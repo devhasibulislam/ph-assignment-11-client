@@ -14,7 +14,7 @@ const Tcard = (props) => {
                 {email}
             </td>
             <td className="px-6 py-4">
-                <img src={img} alt="product-icon" className='w-8 rounded' onClick={() => setToggler(!toggler)} />
+                <img src={img} alt="product-icon" className='w-8 rounded cursor-pointer' onClick={() => setToggler(!toggler)} />
                 <FsLightbox
                     toggler={toggler}
                     sources={[img]}
