@@ -3,6 +3,7 @@
 * server link: [click here](https://git.heroku.com/secure-woodland-83351.git)
 * client side private repo: [click here](https://github.com/ProgrammingHeroWC4/warehouse-management-client-side-hasibulislam999)
 * server side private repo: [click here](https://github.com/ProgrammingHeroWC4/warehouse-management-server-side-hasibulislam999)
+* stackoverflow question: [click here to see](https://stackoverflow.com/questions/72125888/cannot-update-a-component-browserrouter-while-rendering-a-different-componen)
 
 ## StackOverflow solutions:
 1. [descendant of 'a' tag](https://stackoverflow.com/questions/55625431/warning-validatedomnesting-a-cannot-appear-as-a-descendant-of-a)
