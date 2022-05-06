@@ -12,7 +12,6 @@ const Inventory = () => {
     const [myItems] = useMyItems();
     const [stock, setStock] = useState(0);
     const [toggler, setToggler] = useState(false);
-
     const [updateForm, setUpdateForm] = useState(false);
 
     const matchedProducts = products.filter(product => product?._id === id);
@@ -55,7 +54,10 @@ const Inventory = () => {
         }
     };
 
-    const handleItemIncrease = () => {
+    const handleItemIncrease = (event) => {
+        event.preventDefault();
+
+        // setStock(event.target.stock.value);
         let qty, product;
         if (stock > 0) {
             qty = parseInt(finalMatch[0]?.qty) + parseInt(stock);
@@ -64,10 +66,11 @@ const Inventory = () => {
             axios.put(`https://secure-woodland-83351.herokuapp.com/${slug}/${id}`, product)
                 .then(res => {
                     toast('item restocked!');
+                    event.target.reset();
                 })
-        } else {
-            toast('Negative or Empty input not allow!!');
-        }
+            } else {
+                toast('Negative or Empty input not allow!!');
+            }
     };
 
     return (
@@ -138,14 +141,21 @@ const Inventory = () => {
                                     Deliver item
                                 </button>
                             </div>
-                            <div className="my-6">
-                                <input name='stock' type="number" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 text-center" placeholder="Enter Stock Number" required onChange={e => setStock(e.target.value)} />
-                                <button className="text-emerald-500 border border-emerald-500 hover:bg-emerald-500 hover:text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded-full outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 block w-full mt-4" type="button"
-                                    onClick={handleItemIncrease}
-                                >
-                                    Restock item
-                                </button>
-                            </div>
+                            <form className="my-6" onSubmit={handleItemIncrease}>
+                                <input
+                                    name='stock'
+                                    type="number"
+                                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 text-center"
+                                    placeholder="Enter Stock Number"
+                                    required
+                                    onChange={e => setStock(e.target.value)}
+                                />
+                                <input
+                                    className="text-emerald-500 border border-emerald-500 hover:bg-emerald-500 hover:text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded-full outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150 block w-full mt-4"
+                                    type="submit"
+                                    value={'Restock item'}
+                                />
+                            </form>
                         </div>
                     </div>
                     {/* update form stay here! */}
