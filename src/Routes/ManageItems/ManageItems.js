@@ -32,13 +32,13 @@ const ManageItems = () => {
     }, [viewCount]);
 
     return (
-        <div className='bg-gray-400 py-4 md:px-2 px-2 lg:px-0'>
+        <div className='py-4 md:px-2 px-2 lg:px-0'>
             <PageTitle title={'warehouse - Manage Items'}></PageTitle>
             <h1 className='text-center text-6xl py-4'># Our 
                 <span className="text-blue-600 ml-2">
                     <Typewriter
                         words={["Products"]}
-                        loop={5}
+                        loop={7}
                         cursor={true}
                         cursorStyle='_'
                         typeSpeed={70}

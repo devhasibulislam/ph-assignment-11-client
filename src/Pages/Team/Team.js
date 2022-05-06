@@ -11,7 +11,7 @@ const Team = () => {
                         Meet our <u className="text-blue-600">
                             <Typewriter
                                 words={["team members"]}
-                                loop={0}
+                                loop={7}
                                 cursor={true}
                                 cursorStyle='_'
                                 typeSpeed={70}

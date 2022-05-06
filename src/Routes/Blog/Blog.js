@@ -12,7 +12,7 @@ const Blog = () => {
             <h2 className='text-center text-5xl my-12'>Following are some frequently asked <span className='text-red-500'>
                 <Typewriter
                     words={["question's answer"]}
-                    loop={0}
+                    loop={7}
                     cursor={true}
                     cursorStyle='_'
                     typeSpeed={70}

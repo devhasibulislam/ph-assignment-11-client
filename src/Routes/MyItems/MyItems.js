@@ -54,7 +54,7 @@ const MyItems = () => {
                 <span className="text-blue-600 ml-2">
                     <Typewriter
                         words={["Products"]}
-                        loop={5}
+                        loop={7}
                         cursor={true}
                         cursorStyle='_'
                         typeSpeed={70}

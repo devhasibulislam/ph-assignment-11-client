@@ -40,7 +40,7 @@ const AddItems = () => {
                 <span className="text-blue-600 ml-2">
                     <Typewriter
                         words={["own items"]}
-                        loop={5}
+                        loop={7}
                         cursor={true}
                         cursorStyle='_'
                         typeSpeed={70}

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import FsLightbox from 'fslightbox-react';
-import { useNavigate } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../firebase.init';
 
@@ -8,12 +7,11 @@ const Tcard = (props) => {
     const { _id, name, img, price, qty, email, supplier } = props?.item;
     const [toggler, setToggler] = useState(false);
     const [user] = useAuthState(auth)
-    const navigate = useNavigate();
 
     return (
         <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
             <th scope="row" className="px-6 py-4 font-medium text-gray-900 dark:text-white whitespace-nowrap">
-                <span className='cursor-pointer' onClick={() => navigate(`/inventory/${_id}`)}>{_id}</span>
+                {_id}
             </th>
             <td className="px-6 py-4">
                 {email ? email : user?.email}

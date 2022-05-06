@@ -70,7 +70,7 @@ const Home = () => {
                             <p className='text-white text-center bg-black'>
                                 <Typewriter
                                     words={["Powerful dress comes from powerful brand!"]}
-                                    loop={5}
+                                    loop={7}
                                     cursor={true}
                                     cursorStyle='_'
                                     typeSpeed={70}
