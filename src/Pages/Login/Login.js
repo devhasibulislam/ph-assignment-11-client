@@ -40,9 +40,13 @@ const Login = () => {
         await signInWithEmailAndPassword(email, password);
         const { data } = await axios.post('https://secure-woodland-83351.herokuapp.com/login', { email });
         localStorage.setItem('token', data.token);
-        navigate(from, { replace: true });
+        // navigate(from, { replace: true });
 
         event.target.reset();
+    };
+
+    const handleSignInWithGoogle = () => {
+        signInWithGoogle();
     };
 
     if (userG || user) {
@@ -152,7 +156,7 @@ const Login = () => {
                 </form>
                 <hr className='my-4' />
                 <button className="btn btn-lg btn-block btn-primary bg-red-600 hover:bg-red-700  w-full py-2 text-white rounded"
-                    type="submit" onClick={() => signInWithGoogle()}><i className="fa fa-google" aria-hidden="true"></i> Sign in with google</button>
+                    type="submit" onClick={handleSignInWithGoogle}><i className="fa fa-google" aria-hidden="true"></i> Sign in with google</button>
             </div>
 
         </div>

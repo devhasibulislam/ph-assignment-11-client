@@ -75,9 +75,9 @@ const Home = () => {
                     </div>
                 </dh-component>
             </div>
-            {/* services section */}
+            {/* products section */}
             <div className='bg-gray-400 py-4'>
-                <h1 className='text-center text-6xl py-4'># Our Services {
+                <h1 className='text-center text-6xl py-4'># Our Products {
                     (products.length === 0)
                     &&
                     <span className='ml-8'>

@@ -1,6 +1,8 @@
 import axios from 'axios';
+import { signOut } from 'firebase/auth';
 import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
+import { useNavigate } from 'react-router-dom';
 import auth from '../../firebase.init';
 import PageTitle from '../../Pages/PageTitle/PageTitle';
 import Loading from '../../Shared/Loading/Loading';
@@ -10,16 +12,42 @@ const MyItems = () => {
     const [user] = useAuthState(auth);
     const [orders, setOrders] = useState([]);
     const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();
 
     useEffect(() => {
-        const getOrders = async () => {
-            const url = `https://secure-woodland-83351.herokuapp.com/order?email=${user?.email}`;
-            const { data } = await axios.get(url);
-            setOrders(data);
-            setLoading(false);
-        };
-        getOrders();
-    }, [user, orders]);
+        if (user?.providerData[0]?.providerId !== 'google.com') {
+            const getOrders = async () => {
+                const url = `https://secure-woodland-83351.herokuapp.com/order?email=${user?.email}`;
+                try {
+                    const { data } = await axios.get(url, {
+                        headers: {
+                            authorization: `Bearer ${localStorage.getItem('token')}`
+                        }
+                    });
+                    setOrders(data);
+                    setLoading(false);
+                } catch (error) {
+                    console.log(error.message);
+                    if (error.response.status === 401 || error.response.status === 403) {
+                        signOut(auth);
+                        navigate('/login');
+                    }
+                }
+            };
+            getOrders();
+        } else {
+            const getOrders = async () => {
+                const url = `https://secure-woodland-83351.herokuapp.com/item?email=${user?.email}`;
+                const { data } = await axios.get(url);
+                setOrders(data);
+                setLoading(false);
+            };
+            getOrders();
+        }
+    }, [user, orders, navigate]);
+
+    // console.log(user?.providerData[0]?.providerId);
+    // google.com
 
     return (
         <div className='bg-gray-400 py-4 md:px-2 px-2 lg:px-0'>

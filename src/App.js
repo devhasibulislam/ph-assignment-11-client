@@ -15,6 +15,7 @@ import NotFound from './Routes/NotFound/NotFound';
 import Blog from './Routes/Blog/Blog';
 import Inventory from './Routes/Inventory/Inventory';
 import TableView from './Pages/TableView/TableView';
+import ImageLightbox from './Pages/ImageLightbox/ImageLightbox';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/home' element={<Home></Home>}></Route>
         <Route path='/manageItems' element={<ManageItems></ManageItems>}></Route>
+        <Route path='/lightbox' element={<ImageLightbox></ImageLightbox>}></Route>
 
         <Route path='/addItems' element={
           <RequireAuth>
@@ -55,6 +57,7 @@ function App() {
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>
         <Route path='/reset' element={<Reset></Reset>}></Route>
+        
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
 
