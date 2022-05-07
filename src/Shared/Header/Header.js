@@ -12,7 +12,7 @@ const Header = () => {
     const [navbarOpen, setNavbarOpen] = useState(false);
 
     return (
-        <div className='shadow-sm'>
+        <div className='shadow-sm sticky top-0 z-50'>
             <nav className="relative flex flex-wrap items-center justify-between px-2 py-3 mb-3 bg-[#dfe6e9]">
                 <div className="container px-4 mx-auto flex flex-wrap items-center justify-between">
                     <div className="w-full relative flex justify-between lg:w-auto lg:static lg:block lg:justify-start">
