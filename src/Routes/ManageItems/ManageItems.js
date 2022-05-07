@@ -34,11 +34,11 @@ const ManageItems = () => {
     return (
         <div className='py-4 md:px-2 px-2 lg:px-0'>
             <PageTitle title={'warehouse - Manage Items'}></PageTitle>
-            <h1 className='text-center text-6xl py-4'># Our 
+            <h1 className='text-center text-6xl py-4'># Our
                 <span className="text-blue-600 ml-2">
                     <Typewriter
                         words={["Products"]}
-                        loop={7}
+                        loop={false}
                         cursor={true}
                         cursorStyle='_'
                         typeSpeed={70}
@@ -47,12 +47,12 @@ const ManageItems = () => {
                     />
                 </span>
                 {
-                loading
-                &&
-                <span className='ml-8'>
-                    <Loading></Loading>
-                </span>
-            }</h1>
+                    loading
+                    &&
+                    <span className='ml-8'>
+                        <Loading></Loading>
+                    </span>
+                }</h1>
             <hr className='w-36 mx-auto border-t-4 border-[#00a1e5]' />
             <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 max-w-7xl mx-auto gap-y-12 md:gap-x-8 py-12'>
                 {

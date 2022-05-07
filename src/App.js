@@ -15,6 +15,7 @@ import NotFound from './Routes/NotFound/NotFound';
 import Blog from './Routes/Blog/Blog';
 import Inventory from './Routes/Inventory/Inventory';
 import TableView from './Pages/TableView/TableView';
+import About from './Pages/About/About';
 
 function App() {
   return (
@@ -55,6 +56,7 @@ function App() {
           </RequireAuth>
         }></Route>
 
+        <Route path='/about' element={<About></About>}></Route>
         <Route path='/blog' element={<Blog></Blog>}></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/register' element={<Register></Register>}></Route>

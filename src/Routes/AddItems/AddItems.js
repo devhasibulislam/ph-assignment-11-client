@@ -36,11 +36,11 @@ const AddItems = () => {
     return (
         <div>
             <PageTitle title={'warehouse - Add Items'}></PageTitle>
-            <h1 className='text-center text-6xl py-4'># Add 
+            <h1 className='text-center text-6xl py-4'># Add
                 <span className="text-blue-600 ml-2">
                     <Typewriter
                         words={["own items"]}
-                        loop={7}
+                        loop={false}
                         cursor={true}
                         cursorStyle='_'
                         typeSpeed={70}

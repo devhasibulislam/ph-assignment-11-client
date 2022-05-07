@@ -12,7 +12,7 @@ const Blog = () => {
             <h2 className='text-center text-5xl my-12'>Following are some frequently asked <span className='text-red-500'>
                 <Typewriter
                     words={["question's answer"]}
-                    loop={7}
+                    loop={false}
                     cursor={true}
                     cursorStyle='_'
                     typeSpeed={70}
@@ -20,12 +20,12 @@ const Blog = () => {
                     delaySpeed={1000}
                 />
                 {
-                (blogs.length === 0)
-                &&
-                <h1 className='ml-8'>
-                    <Loading></Loading>
-                </h1>
-            }</span></h2>
+                    (blogs.length === 0)
+                    &&
+                    <h1 className='ml-8'>
+                        <Loading></Loading>
+                    </h1>
+                }</span></h2>
             <section className="text-gray-600 body-font">
                 <div className="container px-5 mx-auto">
                     <div className="flex flex-wrap -m-4">
