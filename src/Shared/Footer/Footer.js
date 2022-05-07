@@ -57,11 +57,11 @@ const Footer = () => {
             <div className='container mx-auto my-4 bg-white rounded-xl py-4 flex justify-center items-center'>
                 <h2 className='text-black mr-4 hidden lg:block md:block'>Connect with me there:</h2>
                 <div className='grid grid-cols-5'>
-                    <SocialIcon className='mx-2 hover:scale-[1.2] transition duration-200 ease-in-out' url="https://facebook.com/hasibulislam999.dev/"></SocialIcon>
-                    <SocialIcon className='mx-2 hover:scale-[1.2] transition duration-200 ease-in-out' url="https://stackoverflow.com/users/16820211/hasibul-islam"></SocialIcon>
-                    <SocialIcon className='mx-2 hover:scale-[1.2] transition duration-200 ease-in-out' url="https://linkedin.com/in/hasibulislam999/"></SocialIcon>
-                    <SocialIcon className='mx-2 hover:scale-[1.2] transition duration-200 ease-in-out' url="https://twitter.com/hasibulislam999"></SocialIcon>
-                    <SocialIcon className='mx-2 hover:scale-[1.2] transition duration-200 ease-in-out' url='https://github.com/hasibulislam999'></SocialIcon>
+                    <SocialIcon target={'_blank'} className='mx-2 hover:scale-[1.2] transition duration-200 ease-in-out' url="https://facebook.com/hasibulislam999.dev/"></SocialIcon>
+                    <SocialIcon target={'_blank'} className='mx-2 hover:scale-[1.2] transition duration-200 ease-in-out' url="https://stackoverflow.com/users/16820211/hasibul-islam"></SocialIcon>
+                    <SocialIcon target={'_blank'} className='mx-2 hover:scale-[1.2] transition duration-200 ease-in-out' url="https://linkedin.com/in/hasibulislam999/"></SocialIcon>
+                    <SocialIcon target={'_blank'} className='mx-2 hover:scale-[1.2] transition duration-200 ease-in-out' url="https://twitter.com/hasibulislam999"></SocialIcon>
+                    <SocialIcon target={'_blank'} className='mx-2 hover:scale-[1.2] transition duration-200 ease-in-out' url='https://github.com/hasibulislam999'></SocialIcon>
                 </div>
             </div>
 
