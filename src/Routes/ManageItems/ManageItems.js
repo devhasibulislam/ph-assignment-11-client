@@ -54,7 +54,7 @@ const ManageItems = () => {
                     </span>
                 }</h1>
             <hr className='w-36 mx-auto border-t-4 border-[#00a1e5]' />
-            <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 max-w-7xl mx-auto gap-y-12 md:gap-x-8 py-12'>
+            <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 max-w-7xl mx-auto gap-y-12 md:gap-x-8 py-12 justify-items-center lg:px-4 md:px-4'>
                 {
                     products.map(product => <Card
                         key={product._id}

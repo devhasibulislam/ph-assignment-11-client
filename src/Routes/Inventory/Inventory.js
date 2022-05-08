@@ -46,11 +46,13 @@ const Inventory = () => {
         const qty = parseInt(finalMatch[0]?.qty) - 1;
         const product = { qty };
 
-        if (product.qty > 0) {
+        if (product.qty >= 0) {
             axios.put(`https://secure-woodland-83351.herokuapp.com/${slug}/${id}`, product)
                 .then(res => {
                     toast('item delivered!');
                 })
+        } else {
+            toast('sorry, qty never be negative!!!');
         }
     };
 

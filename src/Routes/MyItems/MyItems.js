@@ -92,7 +92,7 @@ const MyItems = () => {
                     </Link>
                 </div>
             }
-            <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 max-w-7xl mx-auto gap-y-12 md:gap-x-8 py-12'>
+            <div className='grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 max-w-7xl mx-auto gap-y-12 md:gap-x-8 py-12 justify-items-center lg:px-4 md:px-4'>
                 {
                     orders.map(order => <Card
                         key={order._id}
