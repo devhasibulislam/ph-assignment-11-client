@@ -5,6 +5,7 @@ import { Navigate, useLocation } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import auth from '../../firebase.init';
 import Loading from '../../Shared/Loading/Loading';
+import { useSendEmailVerification } from 'react-firebase-hooks/auth';
 
 const RequireAuth = ({ children }) => {
     const [sendEmailVerification, sending, error] = useSendEmailVerification(
