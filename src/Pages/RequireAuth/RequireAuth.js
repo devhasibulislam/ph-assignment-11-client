@@ -7,6 +7,9 @@ import auth from '../../firebase.init';
 import Loading from '../../Shared/Loading/Loading';
 
 const RequireAuth = ({ children }) => {
+    const [sendEmailVerification, sending, error] = useSendEmailVerification(
+    auth
+  );
     const [user, loading] = useAuthState(auth);
     const location = useLocation();
 
