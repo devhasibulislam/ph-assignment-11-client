@@ -7,7 +7,7 @@ import Loading from '../../Shared/Loading/Loading';
 import { useSendEmailVerification } from 'react-firebase-hooks/auth';
 
 const RequireAuth = ({ children }) => {
-    const [sendEmailVerification, sending, error] = useSendEmailVerification(
+    const [sendEmailVerification, sending] = useSendEmailVerification(
     auth
   );
     const [user, loading] = useAuthState(auth);
