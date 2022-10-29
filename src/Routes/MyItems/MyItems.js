@@ -18,7 +18,7 @@ const MyItems = () => {
     useEffect(() => {
         if (user?.providerData[0]?.providerId !== 'google.com') {
             const getOrders = async () => {
-                const url = `https://secure-woodland-83351.herokuapp.com/order?email=${user?.email}`;
+                const url = `https://warehouse-management-wm-server.onrender.com/order?email=${user?.email}`;
                 try {
                     const { data } = await axios.get(url, {
                         headers: {
@@ -38,7 +38,7 @@ const MyItems = () => {
             getOrders();
         } else {
             const getOrders = async () => {
-                const url = `https://secure-woodland-83351.herokuapp.com/item?email=${user?.email}`;
+                const url = `https://warehouse-management-wm-server.onrender.com/item?email=${user?.email}`;
                 const { data } = await axios.get(url);
                 setOrders(data);
                 setLoading(false);

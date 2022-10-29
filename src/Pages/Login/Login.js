@@ -38,7 +38,7 @@ const Login = () => {
         const password = event.target.password.value;
 
         await signInWithEmailAndPassword(email, password);
-        const { data } = await axios.post('https://secure-woodland-83351.herokuapp.com/login', { email });
+        const { data } = await axios.post('https://warehouse-management-wm-server.onrender.com/login', { email });
         localStorage.setItem('token', data.token);
         // navigate(from, { replace: true });
 

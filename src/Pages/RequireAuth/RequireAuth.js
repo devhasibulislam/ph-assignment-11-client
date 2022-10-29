@@ -18,7 +18,7 @@ const RequireAuth = ({ children }) => {
         toast("verification sent to email!");
     }
 
-    if (loading) {
+    if (loading || sending) {
         return <Loading></Loading>
     }
 

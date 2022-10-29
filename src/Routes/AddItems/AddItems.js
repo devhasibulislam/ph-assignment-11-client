@@ -24,7 +24,7 @@ const AddItems = () => {
 
         const product = { email, img, name, desc, price, qty, supplier };
 
-        axios.post('https://secure-woodland-83351.herokuapp.com/addProduct', product)
+        axios.post('https://warehouse-management-wm-server.onrender.com/addProduct', product)
             .then(res => {
                 console.log(res.data);
                 toast('item added!');

@@ -35,7 +35,7 @@ const Inventory = () => {
 
         const product = { img, name, price };
 
-        axios.put(`https://secure-woodland-83351.herokuapp.com/${slug}/${id}`, product)
+        axios.put(`https://warehouse-management-wm-server.onrender.com/${slug}/${id}`, product)
             .then(res => {
                 toast('item updated!');
                 event.target.reset();
@@ -47,7 +47,7 @@ const Inventory = () => {
         const product = { qty };
 
         if (product.qty >= 0) {
-            axios.put(`https://secure-woodland-83351.herokuapp.com/${slug}/${id}`, product)
+            axios.put(`https://warehouse-management-wm-server.onrender.com/${slug}/${id}`, product)
                 .then(res => {
                     toast('item delivered!');
                 })
@@ -65,7 +65,7 @@ const Inventory = () => {
             qty = parseInt(finalMatch[0]?.qty) + parseInt(stock);
             product = { qty };
 
-            axios.put(`https://secure-woodland-83351.herokuapp.com/${slug}/${id}`, product)
+            axios.put(`https://warehouse-management-wm-server.onrender.com/${slug}/${id}`, product)
                 .then(res => {
                     toast('item restocked!');
                     event.target.reset();

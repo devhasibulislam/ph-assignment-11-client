@@ -2,17 +2,16 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 const useBlogs = () => {
-    const [blogs, setBlogs] = useState([]);
-    useEffect(() => {
-        const getBlogs = async () => {
-            const url = `https://secure-woodland-83351.herokuapp.com/qna`;
-            const { data } = await axios.get(url);
-            setBlogs(data);
-        };
-        getBlogs();
-    }, []);
+  const [blogs, setBlogs] = useState([]);
+  useEffect(() => {
+    const getBlogs = async () => {
+      const { data } = await axios.get("https://warehouse-management-wm-server.onrender.com/qna");
+      setBlogs(data);
+    };
+    getBlogs();
+  }, []);
 
-    return [blogs];
+  return [blogs];
 };
 
 export default useBlogs;
